@@ -1,0 +1,109 @@
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.BorderLayout;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JPanel;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.JTextField;
+import javax.swing.JPasswordField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class StudentIDCardGeneratorClass {
+
+	private JFrame frame;
+	private JTextField user;
+	private JPasswordField pass;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					StudentIDCardGeneratorClass window = new StudentIDCardGeneratorClass();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public StudentIDCardGeneratorClass() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.getContentPane().setBackground(Color.BLACK);
+		frame.setBounds(100, 100, 893, 550);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.textHighlight);
+		panel.setBounds(15, 16, 841, 462);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(SystemColor.activeCaption);
+		panel_1.setBounds(174, 0, 667, 462);
+		panel.add(panel_1);
+		panel_1.setLayout(null);
+		
+		user = new JTextField();
+		user.setBounds(345, 117, 279, 36);
+		panel_1.add(user);
+		user.setColumns(10);
+		
+		pass = new JPasswordField();
+		pass.setBounds(345, 210, 279, 36);
+		panel_1.add(pass);
+		
+		JLabel lblUsername = new JLabel("UserName");
+		lblUsername.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblUsername.setBounds(110, 116, 137, 36);
+		panel_1.add(lblUsername);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		lblPassword.setBounds(110, 218, 137, 28);
+		panel_1.add(lblPassword);
+		
+		JButton btnNewButton = new JButton("Login");
+		btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//get text from user
+				//get text from password
+				String un=user.getText();
+				String pas=pass.getText();
+				if(un.equals("admin")&&pas.equals("123")) {
+					JOptionPane.showMessageDialog(null, "Login Succesfully");
+				}
+				else {
+					JOptionPane.showMessageDialog(null,"Invalid Username Or Password");
+				}
+				
+			}
+		});
+		btnNewButton.setBounds(411, 319, 115, 36);
+		panel_1.add(btnNewButton);
+	}
+}
